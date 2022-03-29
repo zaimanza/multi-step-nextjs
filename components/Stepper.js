@@ -22,7 +22,7 @@ function Stepper({ steps, currentStep }) {
                 count++;
             }
             // step completed
-            if (count < stepNumber) {
+            else if (count < stepNumber) {
                 newSteps[count] = {
                     ...newSteps[count],
                     highlighted: false,
@@ -80,12 +80,16 @@ function Stepper({ steps, currentStep }) {
                             <span className="text-white font-bold text-xl">&#10003;</span>
                         ) : (index + 1)}
                     </div>
-                    <div className="absolute top-0 text-center mt-16 w-32 text-xs font-medium uppercase">
+                    <div className={`absolute top-0 text-center mt-16 w-32 text-xs font-medium uppercase ${step.highlighted ?
+                        "text-gray-900" :
+                        "text-gray-400"}`}>
                         {/* Display description */}
-                        Description
+                        {step.description}
                     </div>
                 </div>
-                <div className="flex-auto border-t-2 transition duration-500 ease-in-out">
+                <div className={`flex-auto border-t-2 transition duration-500 ease-in-out ${step.completed ?
+                    "border-green-600" :
+                    "border-gray-300"}`}>
                     {/* Display line */}
                 </div>
             </div>

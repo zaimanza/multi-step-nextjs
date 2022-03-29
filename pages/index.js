@@ -7,10 +7,13 @@ import Details from '../components/steps/Details'
 import Final from '../components/steps/Final'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react'
+import { StepperContext } from '../providers/userRegister'
 
 export default function Home() {
 
   const [currentStep, setCurrentStep] = useState(1)
+  const [userData, setUserData] = useState('')
+  const [finalData, setFinalData] = useState([])
   const steps = [
     "Account Information",
     "Personal Details",
@@ -25,9 +28,16 @@ export default function Home() {
         return <Details />
       case 3:
         return <Final />
-      default:
-        <div></div>
     }
+  }
+
+  const handleClick = (direction) => {
+    let newStep = currentStep
+    direction == "next" ? newStep++ : newStep--
+    console.log("CURRENT STEP")
+    console.log(newStep)
+    console.log(steps.length)
+    newStep > 0 && newStep <= steps.length && setCurrentStep(newStep)
   }
   return (
     <div className={styles.container}>
@@ -45,9 +55,27 @@ export default function Home() {
             steps={steps}
             currentStep={currentStep}
           />
+          {/* Display Components */}
         </div>
+
         {/* Navigation controls */}
-        <StepperControl />
+        <div className="my-10 p-10">
+          <StepperContext.Provider value={{
+            userData,
+            setUserData,
+            finalData,
+            setFinalData
+          }}>
+            {displayStep(currentStep)}
+          </StepperContext.Provider>
+        </div>
+        {currentStep != steps.length &&
+          <StepperControl
+            handleClick={handleClick}
+            currentStep={currentStep}
+            steps={steps}
+          />
+        }
       </main>
     </div>
   )
