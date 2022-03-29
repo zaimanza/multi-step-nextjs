@@ -1,18 +1,15 @@
 import Head from 'next/head'
-import Stepper from '../components/Stepper'
-import StepperControl from '../components/StepperControl'
-import Account from '../components/steps/Account'
-import Details from '../components/steps/Details'
-import Final from '../components/steps/Final'
+import StepperCounterBar from '../components/stepper/StepperCounterBar'
+import StepperBackNextControl from '../components/stepper/StepperBackNextControl'
+import Account from '../components/stepper/storeOwnerRegisterSteps/Account'
+import Details from '../components/stepper/storeOwnerRegisterSteps/Details'
+import Final from '../components/stepper/storeOwnerRegisterSteps/Final'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react'
-// import { StepperContext } from '../providers/userRegister'
 
 export default function Home() {
 
   const [currentStep, setCurrentStep] = useState(1)
-  // const [userData, setUserData] = useState('')
-  // const [finalData, setFinalData] = useState([])
   const steps = [
     "Account Information",
     "Personal Details",
@@ -35,6 +32,7 @@ export default function Home() {
     direction == "next" ? newStep++ : newStep--
     newStep > 0 && newStep <= steps.length && setCurrentStep(newStep)
   }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -47,7 +45,7 @@ export default function Home() {
 
         {/* Stepper */}
         <div className="container horizontal mt-5">
-          <Stepper
+          <StepperCounterBar
             steps={steps}
             currentStep={currentStep}
           />
@@ -56,17 +54,10 @@ export default function Home() {
 
         {/* Navigation controls */}
         <div className="my-10 p-10">
-          {/* <StepperContext.Provider value={{
-            userData,
-            setUserData,
-            finalData,
-            setFinalData
-          }}> */}
           {displayStep(currentStep)}
-          {/* </StepperContext.Provider> */}
         </div>
         {currentStep != steps.length &&
-          <StepperControl
+          <StepperBackNextControl
             handleClick={handleClick}
             currentStep={currentStep}
             steps={steps}

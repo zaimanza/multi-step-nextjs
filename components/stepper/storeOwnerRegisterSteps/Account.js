@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { UserRegister } from '../../providers/userRegister'
+import { UserRegister } from '../../../providers/userRegister'
 
 function Account() {
     const { state, dispatch } = useContext(UserRegister);

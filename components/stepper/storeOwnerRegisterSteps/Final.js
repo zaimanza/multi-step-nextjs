@@ -1,6 +1,6 @@
 // import NextLink from 'next/link'
 import React, { useContext } from 'react'
-import { UserRegister } from '../../providers/userRegister'
+import { UserRegister } from '../../../providers/userRegister'
 
 function Final() {
     const { state, } = useContext(UserRegister);

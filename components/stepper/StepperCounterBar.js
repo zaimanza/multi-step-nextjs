@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 
 
-function Stepper({ steps, currentStep }) {
+function StepperCounterBar({ steps, currentStep }) {
 
     const [newStep, setNewStep] = useState([])
     const stepRef = useRef()
@@ -102,4 +102,4 @@ function Stepper({ steps, currentStep }) {
     )
 }
 
-export default Stepper
+export default StepperCounterBar

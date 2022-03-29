@@ -1,6 +1,6 @@
 import React from 'react'
 
-function StepperControl({ handleClick, currentStep, steps }) {
+function StepperBackNextControl({ handleClick, currentStep, steps }) {
     return (
         <div className="container flex justify-around mt-4 mb-8">
             {/* back button  */}
@@ -22,4 +22,4 @@ function StepperControl({ handleClick, currentStep, steps }) {
     )
 }
 
-export default StepperControl
+export default StepperBackNextControl
