@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Stepper from '../components/Stepper'
 import StepperControl from '../components/StepperControl'
 import Account from '../components/steps/Account'
