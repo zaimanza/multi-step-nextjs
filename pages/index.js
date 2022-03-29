@@ -33,9 +33,6 @@ export default function Home() {
   const handleClick = (direction) => {
     let newStep = currentStep
     direction == "next" ? newStep++ : newStep--
-    console.log("CURRENT STEP")
-    console.log(newStep)
-    console.log(steps.length)
     newStep > 0 && newStep <= steps.length && setCurrentStep(newStep)
   }
   return (
