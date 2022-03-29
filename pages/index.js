@@ -6,13 +6,13 @@ import Details from '../components/steps/Details'
 import Final from '../components/steps/Final'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react'
-import { StepperContext } from '../providers/userRegister'
+// import { StepperContext } from '../providers/userRegister'
 
 export default function Home() {
 
   const [currentStep, setCurrentStep] = useState(1)
-  const [userData, setUserData] = useState('')
-  const [finalData, setFinalData] = useState([])
+  // const [userData, setUserData] = useState('')
+  // const [finalData, setFinalData] = useState([])
   const steps = [
     "Account Information",
     "Personal Details",
@@ -56,14 +56,14 @@ export default function Home() {
 
         {/* Navigation controls */}
         <div className="my-10 p-10">
-          <StepperContext.Provider value={{
+          {/* <StepperContext.Provider value={{
             userData,
             setUserData,
             finalData,
             setFinalData
-          }}>
-            {displayStep(currentStep)}
-          </StepperContext.Provider>
+          }}> */}
+          {displayStep(currentStep)}
+          {/* </StepperContext.Provider> */}
         </div>
         {currentStep != steps.length &&
           <StepperControl

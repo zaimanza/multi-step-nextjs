@@ -1,7 +1,14 @@
-import React from 'react'
-import NextLink from 'next/link'
+// import NextLink from 'next/link'
+import React, { useContext } from 'react'
+import { UserRegister } from '../../providers/userRegister'
 
 function Final() {
+    const { state, } = useContext(UserRegister);
+
+    const handleClick = () => {
+        console.log("PRINT REGISTER DATA")
+        console.log(state)
+    }
     return (
         <div className="container md:mt-10">
             <div className="flex flex-col items-center">
@@ -25,11 +32,13 @@ function Final() {
                 <div className="text-lg font-semibold text-gray-500">
                     Your Account has been created.
                 </div>
-                <NextLink href="/" passHref className="mt-10">
-                    <button className="h-10 px-5 text-green-700 transition-colors duration-150 border border-gray-300 rounded-lg focus:shadow-outline hover:bg-green-500 hover:text-green-100">
-                        Close
-                    </button>
-                </NextLink>
+                {/* <NextLink href="/" passHref className="mt-10"> */}
+                <button
+                    onClick={() => handleClick("next")}
+                    className="h-10 px-5 text-green-700 transition-colors duration-150 border border-gray-300 rounded-lg focus:shadow-outline hover:bg-green-500 hover:text-green-100">
+                    Close
+                </button>
+                {/* </NextLink> */}
             </div>
         </div>
     )
